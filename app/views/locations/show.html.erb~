@@ -1,0 +1,30 @@
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+<p>
+  <strong>Latitude:</strong>
+  <%= @location.latitude %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%= @location.longitude %>
+</p>
+
+<h3>Nearby Locations</h3>
+<ul>
+<%if !@location.blank?%>
+<% for location in @location.nearbys(10) %>
+  <li><%= link_to location.address, location %> (<%= location.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
+<%end%>
+<%#= image_tag "http://maps.googleapis.com/maps/api/streetview?size=200x200&location=40.720032,%20-73.988354&heading=235&sensor=false" %>
+<%= image_tag "http://maps.googleapis.com/maps/api/staticmap?size=500x500&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+
+
+<p>
+  <%= link_to "click here to find new location", new_location_path %>
+</p>
+
+

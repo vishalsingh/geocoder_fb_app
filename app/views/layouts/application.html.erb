@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Google App</title>
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+	<script language="javascript" type="text/javascript">
+	    FB.init({
+		 appId: 570128136341521,
+		 xfbml: true,
+		 cookie: true,
+		 oauth: true
+	       });
+
+	</script>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+<div id="header">
+<h1>Find Your Location</h1>
+</div>
+<br/></br/>
+<%= yield %>
+
+<div id="fb-root">
+<fb:login-button autologoutlink="true" onlogin="OnRequestPermission();" scope="user_about_me,user_activities,user_birthday,user_online_presence">
+</fb:login-button>
+
+&nbsp;&nbsp;
+
+<%= link_to image_tag('send_request_en.gif'), '#', :id => :app_request, :class=>"test"%>&nbsp;&nbsp;<%= link_to image_tag('Share_Your_Experience.jpg'), '#', :id => :post_comments %>
+
+
+<div >
+
+
+
+<script language="javascript" type="text/javascript">
+
+ $('#app_request').click(function () {
+    FB.ui({
+      method: 'apprequests',
+      message: 'Hi This is my test app developed in RoR and integrated in FB',
+      data: 'Stores important links of user'
+    });
+return false;
+  });
+
+
+
+
+$('#post_comments').click(function () {
+
+        // calling the API ...
+        var obj = {
+          method: 'feed',
+          link: 'http://apps.facebook.com/265171790218414/',
+          picture: 'http://cdn1.iconfinder.com/data/icons/softwaredemo/PNG/256x256/User1.png',
+          name: 'Aloo App',
+          caption: 'Using RoR and FaceBook',
+          description: 'Integrated RoR app in Facebook through canvas'
+        };
+        FB.ui(obj);
+       return false;
+      });
+
+
+</script>
+</body>
+</html>
