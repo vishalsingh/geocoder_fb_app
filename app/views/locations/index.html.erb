@@ -28,3 +28,84 @@
 <br />
 
 <%= link_to 'New Location', new_location_path %>
+<br/>
+<br/>
+
+
+
+<br/>
+<br/>
+<fieldset>
+<legend>Friends Count</legend>
+
+
+  <% if current_user %>
+  Number of Friends: <%= current_user.friends_count %>
+<% end %>
+</fieldset>
+
+
+<br />
+
+<fieldset>
+  <legend>All Friend List</legend>
+<% if current_user  %>
+<table border=1>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Status</th>
+    <th>Loction</th>
+
+  </tr>
+    <% for friend in current_user.friends_list  %>
+          <tr>
+            <td><b><%= friend["id"]%> </b></td>
+          
+         
+            <td><%= friend["name"] %></td>
+         
+           <td><%= friend["relationship_status"]%></td>
+          <td><%= friend["location"]["name"] %></td>
+          </tr>
+        <% end %>
+    <table>
+<% end %>
+</fieldset>
+
+
+
+<fieldset>
+  <legend>Single Status Friend List</legend>
+<% if current_user  %>
+<table border=1>
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Status</th>
+  </tr>
+    <% for friend in current_user.status_single_friend  %>
+          <tr>
+            <td><b><%= friend["id"]%> </b></td>
+          
+         
+            <td><%= friend["name"] %></td>
+         
+           <td><%= friend["relationship_status"]%></td>
+
+          </tr>
+        <% end %>
+    <table>
+<% end %>
+</fieldset>
+
+
+
+
+
+
+<% if session[:user_id].blank? %>
+ <p><%= link_to 'Sign in with Facebook', signin_path %></p>
+ <%else%>
+ <%= link_to 'logout', signout_path %> 
+<%end%>

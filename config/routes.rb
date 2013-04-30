@@ -1,7 +1,10 @@
 GeocoderApp1::Application.routes.draw do
   resources :locations
 
-
+  match 'login' => 'locations#login'
+  match '/auth/:provider/callback' => 'sessions#create'
+  match '/signout' => 'sessions#destroy', :as => :signout
+  match '/signin' => 'sessions#new', :as => :signin
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

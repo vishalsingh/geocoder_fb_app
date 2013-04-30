@@ -2,7 +2,15 @@ class LocationsController < ApplicationController
   # GET /locations
   # GET /locations.json
   def index
-    @locations = Location.all
+
+#@graph = Koala::Facebook::API.new('BAACEdEose0cBAOndIZCjcaTGliFZBWIMRDpuOvdW8hPHiWR15a01jTuTIfJGScE1lzbpjDMBWdNZBQVySazBdh3vl9Oo86dk40a2zRrE3C1xM6rxqghJaxnKgh3gbm3ZAQiWP9utcv0YGWebRYIMvOptIyCU8X5bIuPutHFYYHiP92ZADPTZC7i5vQOjYD4LDVPOy0TO4iTCLKHec7UljToPBFYDfqgFCZCSgrB99A1LREpdjwEaZBse')
+#@hello = @graph.get_object("my.Name")
+#render :text=>'<pre>' + @hello.to_yaml and return
+#@graph = Koala::Facebook::API.new('BAACEdEose0cBAFUHbYr2brBqwStJq42VlGXZAi10CwqZCoSP1PC7AAfwzkGHEwv8j5YRklCEIXo7cgPbrQcZCVeVpNtXtb20QhOAcrHIzZArmoSpxmIFZB6pnFMsiGdE065WNYTlnxJnV3MXZAm1rCdGcgCIhOREZByr9Mcq4cKObQlPOVpXZAS1vgfJktiNROULr27mhxEroAyu7B0fl9EoTcKQcOmvasHWHbjsd4rkdQZDZD')
+
+#profile = @graph.get_object("me")
+#friends = @graph.get_connections("me", "friends")
+# render :text=>'<pre>' + friends.to_yaml and return
 if params[:search].present?
     @locations = Location.near(params[:search], 50, :order => :distance)
   else
@@ -84,4 +92,6 @@ if params[:search].present?
       format.json { head :no_content }
     end
   end
+
+
 end
