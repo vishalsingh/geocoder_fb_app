@@ -14,7 +14,7 @@ end
 
 
 def facebook
-    @facebook ||= Koala::Facebook::API.new('BAACEdEose0cBAJXeV00CCQB2GEfG5tg60GjuhOf8BIlhEfLlFBzUkbuZBImybZBxOJg4ILqY9BaFJDZBB7ZALlhn4ZAxeuwkQLAERt4pdxARMuyN994zvTDcpGA0BnkfonjmJxcf2rU0eZBLZABxSZBfZCzTUicn5wpZAwpVUmfNZClO2TX5az8omnLrmEHVITIto5ZBSnomoBZBrVtlUZCXD8YjbvE866FxVXZBRMO1lKD79AERAZDZD')
+    @facebook ||= Koala::Facebook::API.new('BAAIGh00LCBEBAJ8rTtbjwtUUdUKBRZBUOCWlVEZAS3ZCEyzHtJ7FyG7tYGjFMLEAMiKQnOvI0Gl4c7AWTpF5z2iKynfUGAKDb5F5GN4UG5QOrSsE8PCXlee6d3nsZCrGujL0SGGGnyI3XvPQQHNAbYtZAs15kF5f4N87h0JVD3jGcBm47ofsdWOgCUjUItz5AjFHuGACumJQYyq94lzR722lnszxah9GZApdGgzaoLqCwXPwyvJ7NZB')
     block_given? ? yield(@facebook) : @facebook
   rescue Koala::Facebook::APIError => e
     logger.info e.to_s
